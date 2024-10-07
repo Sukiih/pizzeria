@@ -80,8 +80,8 @@ a:hover {
 /* Sección de pizzas */
 .row {
     display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan */
-    justify-content: flex-start; /* Alineación de las tarjetas */
+    flex-wrap: wrap;
+    justify-content: flex-start; 
 }
 
 .card {
@@ -94,7 +94,7 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column; 
-    order: 1; /* Orden predeterminado */
+    order: 1; 
 }
 
 .card img {
@@ -175,4 +175,16 @@ button {
     color: #fff;
     padding: 10px;
     text-align: center;
+}
+
+
+.mensaje {
+    position: fixed;
+    top: 20px;
+    right: 45%;
+    background-color: #28a745; 
+    color: white;
+    padding: 20px 40px;
+    border-radius: 5px;
+    z-index: 1000; 
 }

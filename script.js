@@ -20,15 +20,27 @@ const obtenerPrecio = (pizza) => {
 const agregarAlCarrito = (pizza) => {
     const nombre = pizza.querySelector('.card-title').textContent;
     const precio = obtenerPrecio(pizza);
-    
-    if (!isNaN(precio)) {
-        productosCarrito.push({ nombre, precio });
-        totalPrecio += precio;
-        mostrarProductosCarrito();
-        alert('Producto agregado'); //modificar
-    } else {
+
+    if (isNaN(precio)) {
         console.error('No se pudo obtener el precio de la pizza:', pizza);
+        return; 
     }
+
+    productosCarrito.push({ nombre, precio });
+    totalPrecio += precio;
+    mostrarProductosCarrito();
+    mostrarMensaje('Producto agregado'); 
+};
+
+const mostrarMensaje = (mensaje) => {
+    const mensajeElemento = document.createElement('div');
+    mensajeElemento.textContent = mensaje;
+    mensajeElemento.className = 'mensaje'; 
+    document.body.appendChild(mensajeElemento);
+    
+    setTimeout(() => {
+        mensajeElemento.remove(); 
+    }, 3000);
 };
 
 // mostrar productos en el carrito
