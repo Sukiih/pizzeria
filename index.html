@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería El Fuego</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Pizzería El Fuego</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#nosotros">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu">Menú</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-light" id="carritoBtn">Carrito <span id="cantidadProductos" class="badge bg-light text-dark">0</span></button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+        <!-- Modal del Carrito -->
+        <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group" id="listaProductos"></ul>
+                        <p id="total">Total: $0.00</p>
+                        <button id="vaciarCarrito" class="btn btn-danger">Vaciar Carrito</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button id="pagar" class="btn btn-success">Ir a Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <main>
+        <section class="banner text-center text-white py-5">
+            <h1 class="display-4">Bienvenidos a Pizzería <br><span class="text-danger text-">El Fuego</span></h1>
+            <p class="lead">Disfruta de nuestras deliciosas pizzas artesanales</p>
+        </section>
+
+
+        <!--Nosotros-->
+        <section id="nosotros" class="container my-5">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>Sobre Nosotros</h2>
+                    <p>
+                        Bienvenidos a nuestra pizzería, donde la tradición se encuentra con la innovación. Desde nuestros inicios, nos hemos dedicado a ofrecer pizzas elaboradas con los ingredientes más frescos y de la mejor calidad. 
+                        Nuestra historia comienza en un pequeño pueblo, donde un grupo de amantes de la pizza decidió compartir su pasión con el mundo. Cada una de nuestras recetas es una combinación perfecta de sabores que refleja nuestra dedicación y amor por la cocina.
+                    </p>
+                    <p>
+                        Creemos que la comida no solo alimenta el cuerpo, sino que también nutre el alma. Por eso, cada pizza que preparamos está hecha con amor y cuidado. Te invitamos a que nos acompañes en este viaje culinario y disfrutes de una experiencia única con cada bocado.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://media.istockphoto.com/id/1187411983/es/foto/fabricante-de-pizza-deslizando-la-pizza-de-una-c%C3%A1scara-en-un-horno-de-le%C3%B1a.jpg?s=612x612&w=0&k=20&c=MAJxXQc1gPFVPqy7gUwhAk2YlgSG0aTBAiTXvUWOJ3s=" 
+                         alt="Nuestra Pizzería" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+        
+
+
+
+        <!--Menu pizzas-->
+
+        <section id="menu" class="container my-5">
+            <h2 class="mb-4">Menú</h2>
+            <form class="d-flex mb-4">
+                <input class="form-control me-2" type="search" placeholder="Buscar pizzas" aria-label="Buscar pizzas" id="buscar">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+
+            <div id="mensajeBusqueda" style="display: none; color: rgb(0, 0, 0); margin-top: 10px;"></div>
+            
+            <div class="row d-flex">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1658478006307-525ab032ab26?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBpenphJTIwbWFyZ2FyaXRhfGVufDB8fDB8fHww" class="card-img-top" alt="Pizza Margarita">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Margarita</h5>
+                            <p class="card-text">Ingredientes: tomate, mozzarella, albahaca, aceite de oliva</p>
+                            <p class="card-price">Precio: $10.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGl6emElMjBxdWVzb3xlbnwwfHwwfHx8MA%3D%3D" class="card-img-top" alt="Pizza Cuatro Quesos">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Cuatro Quesos</h5>
+                            <p class="card-text">Ingredientes: mozzarella, parmesano, gorgonzola, ricotta</p>
+                            <p class="card-price">Precio: $12.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.pexels.com/photos/5903320/pexels-photo-5903320.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Pizza Prosciutto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Prosciutto</h5>
+                            <p class="card-text">Ingredientes: prosciutto, arugula, parmesano</p>
+                            <p class="card-price">Precio: $14.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/521403691/es/foto/casera-con-opciones-fr%C3%ADas-y-calientes-y-pizza-de-chorizo.jpg?s=612x612&w=0&k=20&c=e65G7OWoYUXnSWFDRKgt4Ga82vw76RaLUQ1AGvsutJw=" class="card-img-top" alt="Pizza Pepperoni">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Pepperoni</h5>
+                            <p class="card-text">Ingredientes: salsa de tomate, mozzarella, pepperoni, orégano.</p>
+                            <p class="card-price">Precio: $10.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/2150383746/es/foto/food-photos-various-entrees-appetizers-deserts-etc.jpg?s=612x612&w=0&k=20&c=vgtE-C09t0sPfEENwATgbqJs1ojEv92CM1TB_5QDI0c=" class="card-img-top" alt="Pizza Cuatro Quesos">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Vegetariana</h5>
+                            <p class="card-text">Ingredientes: salsa de tomate, mozzarella, pimientos, champiñones, cebolla, aceitunas.</p>
+                            <p class="card-price">Precio: $12.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/484540457/es/foto/pizza-casera-de-pollo-a-la-barbacoa.jpg?s=612x612&w=0&k=20&c=KNQGnBpAVcN1mOMQiEv6KYTlfCQ5jJaqD4avju3klOU=" class="card-img-top" alt="Pizza Pollo BBQ">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza BBQ Pollo</h5>
+                            <p class="card-text">Ingredientes:  pollo a la parrilla, salsa BBQ, mozzarella, cebolla roja, cilantro.</p>
+                            <p class="card-price">Precio: $14.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/1449564809/es/foto/pizza-casera-de-cuatro-estaciones-con-tomates-mozzarella-champi%C3%B1ones-alcachofas-jam%C3%B3n-y.jpg?s=612x612&w=0&k=20&c=T9ZWGqQfUeSAlKg4-I1OPUaC21OSknd_r7v9f93wpCU=" class="card-img-top" alt="Pizza Cuatro Estaciones">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Cuatro Estaciones</h5>
+                            <p class="card-text">Ingredientes: salsa de tomate, mozzarella, alcachofas, jamón, champiñones, aceitunas.</p>
+                            <p class="card-price">Precio: $10.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/1349383878/es/foto/pizza-hawaiana-con-jam%C3%B3n-y-pi%C3%B1a.jpg?s=612x612&w=0&k=20&c=oc3y6BPWj4hdd7RDi-Sys-dVdXueaomNYOZX9qunLqY=" class="card-img-top" alt="Pizza Hawaiana">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Hawaiana</h5>
+                            <p class="card-text">Ingredientes: salsa de tomate, mozzarella, jamón, piña.</p>
+                            <p class="card-price">Precio: $12.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/506469524/es/foto/pizza.jpg?s=612x612&w=0&k=20&c=AeOv7w081PvGVV4d2r04HNXOM-aTCCKHOAsHCNHzFGg=" class="card-img-top" alt="Pizza Carbonara">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Carbonara</h5>
+                            <p class="card-text">Ingredientes: crema, mozzarella, panceta, huevo, pimienta negra</p>
+                            <p class="card-price">Precio: $14.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/1273377790/es/foto/pizza-de-calabresa-comida-brasile%C3%B1a.jpg?s=612x612&w=0&k=20&c=a3GI6TvHWhW5mGzP2oa3LoBu8fKY8GvqthwqfywL15w=" class="card-img-top" alt="Pizza Calabresa">
+                        <div class="card-body">
+                            <h5 class="card-title">Calabresa</h5>
+                            <p class="card-text">Ingredientes: salsa de tomate, mozzarella, salchicha calabresa, cebolla y aceitunas.</p>
+                            <p class="card-price">Precio: $10.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/1323805905/es/foto/pizza-italiana-tradicional-margherita-con-tomates-mozzarella-albahaca.jpg?s=612x612&w=0&k=20&c=92vz0kHXu6K_0cLsCr4a2wDrZnrXLKPVhn-dGfJWzMY=" class="card-img-top" alt="Pizza Pesto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Pesto</h5>
+                            <p class="card-text" data-full-text="Ingredientes: tomate, mozzarella, albahaca, aceite de oliva">Ingredientes: tomate, mozzarella, albahaca, aceite de oliva</p>
+                            <p class="card-price">Precio: $12.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.pexels.com/photos/5903320/pexels-photo-5903320.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Pizza Napolitana">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Napolitana</h5>
+                            <p class="card-text">Ingredientes: salsa de tomate, mozzarella, jamón de pierna, tomates y orégano.</p>
+                            <p class="card-price">Precio: $14.99</p>
+                            <button class="btn btn-primary mt-2">Pedir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacto" class="container my-5">
+            <h2 class="mb-4">Contacto</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Ingrese su teléfono" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer class="text-center bg-dark text-white py-3">
+        <p>&copy; 2023 Pizzería El Fuego</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
